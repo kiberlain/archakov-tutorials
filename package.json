@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"npx webpack-dev-server --mode development --open --hot",
-    "build":"npx webpack --mode production"
+    "start": "npx webpack-dev-server --mode development --open --hot",
+    "build": "npx webpack --mode production"
   },
   "author": "",
   "license": "ISC",
@@ -21,11 +21,14 @@
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
+    "file-loader": "^6.2.0",
     "open-props": "^1.1.0",
     "react-router-dom": "^6.2.1",
     "sass": "^1.45.2",
     "sass-loader": "^12.4.0",
     "style-loader": "^3.3.1",
+    "svg-url-loader": "^7.1.1",
+    "url-loader": "^4.1.1",
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.7.2"
