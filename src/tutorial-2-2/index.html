@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Список задач</title>
+</head>
+<body>
+    <main>
+        <h1>Список задач</h1>
+
+        <input type="search" placeholder="Текст задачи..." />
+        <button>Добавить</button>
+
+        <ul class="list">
+        </ul>
+
+
+    </main>
+
+    <script>
+
+        let tasks = ['первый','второй', 'третий', 'четвёртый', 'пятый']
+        let list
+
+        const todoInput = document.querySelector("input")
+        const todoButton = document.querySelector("button")
+        const todoList = document.querySelector("ul")
+        todoButton.addEventListener('click', addTodo)
+
+        function render(tasks){
+            if(tasks.length){
+                list = tasks.map((item, index) => {
+                    const todo = document.createElement("li")
+                    todo.setAttribute('data-index', index)
+                    todo.textContent = item
+                    const deleteButton = document.createElement("button")
+                    deleteButton.classList.add("delete-task")
+                    deleteButton.textContent = "удалить"
+                    todo.appendChild(deleteButton)
+                    todoList.appendChild(todo)
+                    todoList.addEventListener('click', delTodo)
+                })
+            }
+        }
+
+        function delTodo(e) {
+            e.preventDefault()
+            let item = e.target
+            let indexItem = item.parentNode.getAttribute('data-index')
+            tasks.splice(indexItem, 1)
+            console.log(tasks)
+            todoList.innerHTML = ''
+            render(tasks)
+        }
+
+
+        function addTodo(e){
+            e.preventDefault()
+            todoList.innerHTML = ''
+            let newTask =  todoInput.value
+            tasks.push(newTask)
+            todoInput.value = ""
+            render(tasks)
+        }
+
+        render(tasks)
+
+    </script>
+</body>
+</html>
