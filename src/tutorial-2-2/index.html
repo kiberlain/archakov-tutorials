@@ -28,7 +28,7 @@
         const todoInput = document.querySelector("input")
         const todoButton = document.querySelector("button")
         const todoList = document.querySelector("ul")
-        todoButton.addEventListener('click', addTodo)
+        todoButton.addEventListener('click', handleClickAdd)
 
         function render(tasks){
             if(tasks.length){
@@ -41,12 +41,12 @@
                     deleteButton.textContent = "удалить"
                     todo.appendChild(deleteButton)
                     todoList.appendChild(todo)
-                    todoList.addEventListener('click', delTodo)
+                    todoList.addEventListener('click', handleClickRemove)
                 })
             }
         }
 
-        function delTodo(e) {
+        function handleClickRemove(e) {
             e.preventDefault()
             let item = e.target
             let indexItem = item.parentNode.getAttribute('data-index')
@@ -57,7 +57,7 @@
         }
 
 
-        function addTodo(e){
+        function handleClickAdd(e){
             e.preventDefault()
             todoList.innerHTML = ''
             let newTask =  todoInput.value
